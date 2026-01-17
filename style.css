@@ -1,0 +1,257 @@
+:root {
+  --bg: #f7f9ff;          /* soft white-blue */
+  --block: #ffffff;      /* fairy card */
+  --border: #2f55a4;     /* Snow White blue */
+  --accent: #c91d2b;     /* ribbon red */
+  --accent-2: #f4c430;   /* golden yellow */
+  --dark: #1f2a44;       /* royal dark blue */
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  background:
+    radial-gradient(circle at 25% 20%, #ffffff 2px, transparent 2px),
+    radial-gradient(circle at 75% 30%, #ffffff 1.5px, transparent 2px),
+    linear-gradient(180deg, #f7f9ff, #dce2f0);
+  background-size: 100px 100px, 160px 160px, cover;
+  color: var(--dark);
+}
+
+
+/* HERO */
+.hero {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  background: linear-gradient(135deg, #0e2047, #3e74de);
+  padding: 1.5rem 0.5rem; /* sebelumnya 4rem → diperkecil */
+  border-bottom: 8px solid var(--accent-2); /* sedikit lebih tipis */
+  overflow: hidden;
+}
+
+
+
+
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -120vh;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background: white;
+  box-shadow:
+    2vw 5vh white,
+    5vw 20vh white,
+    8vw 45vh white,
+    12vw 70vh white,
+    15vw 30vh white,
+    18vw 85vh white,
+    22vw 55vh white,
+    26vw 10vh white,
+    30vw 40vh white,
+    34vw 75vh white,
+    38vw 25vh white,
+    42vw 60vh white,
+    46vw 15vh white,
+    50vw 90vh white,
+    54vw 35vh white,
+    58vw 65vh white,
+    62vw 20vh white,
+    66vw 80vh white,
+    70vw 45vh white,
+    74vw 10vh white,
+    78vw 55vh white,
+    82vw 30vh white,
+    86vw 70vh white,
+    90vw 15vh white,
+    94vw 60vh white,
+    98vw 40vh white;
+  animation: snowDrift 34s linear infinite;
+  opacity: 0.65;
+}
+
+
+.hero::after {
+  width: 3px;
+  height: 3px;
+  opacity: 0.45;
+  animation-duration: 50s;
+  animation-delay: -25s;
+}
+
+
+@keyframes snowDrift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(10px, 35vh); }
+  50%  { transform: translate(-8px, 70vh); }
+  75%  { transform: translate(6px, 100vh); }
+  100% { transform: translate(0, 150vh); }
+}
+
+
+
+
+
+
+.hero-block {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  image-rendering: pixelated;
+  border: 6px solid white;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: white;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+}
+
+.hero p {
+  font-size: 0.7rem;
+  color: #fdfdfd;
+}
+
+
+
+
+/* CONTAINER */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 360px 1.5rem 3rem;
+}
+
+/* SECTIONS */
+.tetris-section {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  color: var(--border);
+  text-shadow: 1px 1px 0 #ffffff;
+}
+
+
+/* BLOCK CARD */
+.block {
+  background: var(--block);
+  border: 4px solid var(--border);
+  box-shadow: 0 10px 0 rgba(47, 85, 164, 0.35);
+  border-radius: 16px;
+}
+
+
+.card {
+  padding: 1.8rem;
+}
+.card h3,
+.card h4 {
+  font-size: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.card p,
+.card li {
+  font-size: 0.65rem;
+  line-height: 1.9;
+}
+
+.muted {
+  display: block;
+  font-size: 0.6rem;
+  margin-bottom: 0.6rem;
+  opacity: 0.75;
+}
+
+/* LIST */
+ul {
+  margin-top: 0.5rem;
+  padding-left: 1.2rem;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* BADGES */
+.badges span {
+  display: inline-block;
+  background: linear-gradient(
+    135deg,
+    #ffdede,
+    #fff0f0
+  );
+  border: 3px solid var(--accent);
+  color: var(--dark);
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.55rem;
+  box-shadow: 0 3px 0 rgba(201, 29, 43, 0.35);
+  margin: 0.3rem;
+}
+
+
+
+.character {
+  position: fixed;
+  bottom: calc(58vh - 330px); /* tepat di atas garis kuning */
+  left: 20px;
+  width: 64px;
+  z-index: 200;
+  animation: moveX 64s linear infinite alternate;
+}
+.character {
+  pointer-events: none; /* biar tidak ganggu klik */
+}
+
+
+
+.character img {
+  width: 100%;
+  image-rendering: pixelated;
+  animation: flip 128s steps(1) infinite;
+}
+
+
+/* GERAK KIRI ↔ KANAN */
+@keyframes moveX {
+  from {
+    left: 20px;
+  }
+  to {
+    left: calc(100% - 90px);
+  }
+}
+
+/* FLIP HANYA SAAT SAMPAI UJUNG */
+@keyframes flip {
+  0%, 49.9% {
+    transform: scaleX(1);
+  }
+  50%, 100% {
+    transform: scaleX(-1);
+  }
+}
